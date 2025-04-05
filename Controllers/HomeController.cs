@@ -77,8 +77,8 @@ namespace MVCPrac.Controllers
                 item.Selected = item.Value == s.Gender;
             }
             ViewBag.Gender = items;
-            //return View("Index", student);
-            return View("SingleFileUpload");
+            return View("Index", student);
+           // return View("SingleFileUpload");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
