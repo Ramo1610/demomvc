@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model MVCPrac.Models.Student
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p class="display-4">@ViewData["Header"]</p>
+    <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Back to List</a>
+    <form asp-action="Submitdata" asp-controller="Home" method="post">
+        <img asp-src=@Model.ImageUrl alt=”My” asp-append-version=”true” width=”200″ height=”150″ class=”img-thumbnail” style=”border: 1px solid #ccc;”
+        <img src=”~/image/2.png” style=”border: 1px solid #ccc;” />
+        
+        <environment include="Staging">
+            <img src="@Url.Content("~/image/2.png")" alt=”My” width=”20″ height=”15″ class=”img-thumbnail” style=”border: 1px solid #ccc;” />
+        </environment>
+        
+        <table>
+            <tr>
+                <td>@Html.Label("StudentId") :</td>
+                <td>@Html.TextBox("StudentId", Model.StudentId, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Name") :</td>
+                <td>@Html.TextBox("Name", Model.Name, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Branch") :</td>
+                <td>@Html.TextBox("Branch", Model.Branch, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("Section") :</td>
+                <td>@Html.TextBox("Section", Model.Section, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                @*<td>@Html.Label("Gender") :</td>
+                <td>@Html.TextBox("Gender", Model.Gender, new { @class = "form-control" })</td>*@
+                <td>
+                    <label for="Departments" class="form-label">Select Gender</label>
+                </td>
+                <!-- Dropdown list with Bootstrap styling -->
+                <td>
+                    @Html.DropDownList("Gender", @ViewBag.Gender, "Select Gender", new { @class = "form-control" })
+                    @* @Html.DropDownListFor(model => model.CountryId, new SelectList(ViewBag.Countries, “Value”, “Text”), “Select Country”)*@
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" class="btn-primary" /></td>
+            </tr>
+        </table>
+    </form>
+    
+</div>
